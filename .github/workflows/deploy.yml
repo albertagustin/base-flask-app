@@ -1,22 +1,19 @@
-name: Pre Deploy
+name: Deploy
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  pre-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    name: Run pre-deploy action
+    name: Run deploy action
     steps:
       - uses: actions/checkout@v2
         with:
           repository: albertagustin/github-actions
-          ref: main
+          ref: v1
           path: ./.github/actions/github-actions
       - id: pre-deploy
-        uses: ./.github/actions/github-actions/pre-deploy
+        uses: ./.github/actions/github-actions/deploy
